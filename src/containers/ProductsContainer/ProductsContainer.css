@@ -1,0 +1,10 @@
+.Enclosing {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    
+}
+
+.Filterbar {
+    width: 300px;
+}

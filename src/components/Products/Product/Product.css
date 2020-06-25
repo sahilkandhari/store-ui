@@ -1,0 +1,28 @@
+.Product {
+    height:50%;
+    max-width: 300px;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.Image {
+    background-color: white;
+    padding: 8px;
+    height: 100%;
+    width: 60%;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+@media (min-width: 500px) {
+    .Product {
+        width: 450px;
+    }
+}
+
+.Product:hover {
+    border: 2px solid #646464;
+  }

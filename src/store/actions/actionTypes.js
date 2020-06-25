@@ -1,0 +1,6 @@
+export const ADD_PRODUCT = 'ADD_PRODUCT'
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+
+export const ADD_TOKEN = 'ADD_TOKEN'
+export const REMOVE_TOKEN = 'REMOVE_TOKEN'
+export const CHECK_AUTH_STATE = 'CHECK_AUTH_STATE'

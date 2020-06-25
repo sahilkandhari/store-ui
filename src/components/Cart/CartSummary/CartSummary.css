@@ -1,0 +1,12 @@
+.Cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.Control {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}

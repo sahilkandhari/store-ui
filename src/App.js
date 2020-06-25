@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import {Route, Switch, Redirect} from 'react-router-dom'
+import ProductsContainer from './containers/ProductsContainer/ProductsContainer' 
+import Layout from './components/Layout/Layout'
+import Orders from './containers/Orders/Orders'
+import Cart from './components/Cart/CartSummary/CartSummary'
+import Auth from './containers/Auth/Auth'
+import Logout from './containers/Auth/Logout/Logout'
+import * as actions from './store/actions/index'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount () {
+    this.props.onTryAutoSignup()
+  }
+
+  render () {
+
+    let routes= ( <Switch>
+      <Route path="/" exact component={ProductsContainer}/>
+      <Route path="/auth" component={Auth} />
+      <Redirect to="/" />
+      </Switch>
+    )
+
+    if(this.props.isAuth) {
+      routes = ( <Switch>
+        <Route path="/" exact component={ProductsContainer}/>
+        <Route path="/orders" component={Orders} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/logout" component={Logout} />
+        <Redirect to="/" />
+        </Switch>
+      )
+    }
+
+    return (
+      <div>
+          <Layout>
+            {routes}
+          </Layout>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      isAuth: state.auth.token !== null
+  }
+}
+
+ const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () => dispatch(actions.checkAuthState())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

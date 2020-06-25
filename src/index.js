@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
+import thunk from 'redux-thunk';
+import productsContainerReducer from './store/reducers/ProductsContainer'
+import authReducer from './store/reducers/auth'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+const rootReducer = combineReducers({
+  productsContainer: productsContainerReducer,
+  auth: authReducer
+})
+
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunk)
+));
+
+const app = (
+  <Provider store={store}>
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+  </Provider>
+)
+
+ReactDOM.render(app,
   document.getElementById('root')
 );
 

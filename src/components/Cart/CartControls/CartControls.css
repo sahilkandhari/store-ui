@@ -1,0 +1,55 @@
+.CartC {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.Label {
+    border: 1px solid #ccc;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.CartC button {
+    display: block;
+    font: inherit;
+    padding: 5px;
+    width: 80px;
+    border: 1px solid rgb(34, 150, 228);
+    cursor: pointer;
+    outline: none;
+}
+
+.CartC button:disabled {
+    background-color: #AC9980;
+    border: 1px solid #7E7365;
+    color: #ccc;
+    cursor: default;
+}
+
+.CartC button:hover:disabled {
+    background-color: rgb(177, 168, 157);
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.CartC .Less {  
+    background-color: rgb(78, 39, 250);
+    color: white;
+}
+
+.CartC .More {
+    background-color: rgb(78, 39, 250);
+    color: white;
+}
+
+.CartC .Less:hover, .Less:active {  
+    background-color: rgb(250, 39, 49);
+    color: white;
+}
+
+.CartC .More:hover, .More:active {
+    background-color: rgb(36, 206, 107);
+    color: white;
+}
