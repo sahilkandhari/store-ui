@@ -1,37 +1,22 @@
 import * as actionTypes from '../actions/actionTypes'
 import { updateObject } from '../utility'
-import productsArray from '../../data/products'
 
-
-let CART_ARRAY = []
-let CART = {}
-let PRODUCT_PRICES_ARRAY = []
-let PRODUCT_PRICES= {}
-
-
-productsArray.map((product) => {
-    PRODUCT_PRICES_ARRAY.push({
-        name : product.name,
-        price : product.price
-        })
-    CART_ARRAY.push({
-        name: product.name
-    })
-})
-
-for(let i=0; i < CART_ARRAY.length; i++) {
-    CART[CART_ARRAY[i].name] = 0
+const CART = {
+    Spinach:0,
+    Carrot:0,
+    Butter:0,
+    Bread:0,
+    Cheese:0
 }
 
-for(let i =0; i < PRODUCT_PRICES_ARRAY.length; i++) {
-    PRODUCT_PRICES[PRODUCT_PRICES_ARRAY[i].name] = PRODUCT_PRICES_ARRAY[i].price
-}
-console.log(CART)
-console.log(PRODUCT_PRICES)
 
 const initialState = {
-    cart: CART,
+    cart: {},
+    prices: {},
     totalPrice : 0,
+    products: [],
+    error: false,
+    loading: true,
 }
 
 const productsContainerReducer = (state = initialState ,action) => {
@@ -41,7 +26,7 @@ const productsContainerReducer = (state = initialState ,action) => {
             const updatedCart = updateObject(state.cart, updatedProduct) 
             const updatedState = {
                 cart: updatedCart,
-                totalPrice: state.totalPrice + PRODUCT_PRICES[action.productName]
+                totalPrice: state.totalPrice + state.prices[action.productName]
             }
             return updateObject(state,updatedState)
             
@@ -50,9 +35,29 @@ const productsContainerReducer = (state = initialState ,action) => {
             const updatedC = updateObject(state.cart, updatedProd) 
             const updatedS = {
                 cart: updatedC,
-                totalPrice: state.totalPrice - PRODUCT_PRICES[action.productName]
+                totalPrice: state.totalPrice - state.prices[action.productName]
             }
             return updateObject(state,updatedS)
+        
+        case actionTypes.SET_PRODUCTS : 
+            return {
+                ...state,
+                products: action.products,
+                error: false,
+                loading: action.loading
+            }
+        case actionTypes.SET_CART_PRICES : 
+            return {
+                ...state,
+                cart: action.cart,
+                prices: action.prices
+            }
+        case actionTypes.FETCH_PRODUCTS_FAIL : 
+            return {
+                ...state,
+                error: true,
+                loading: action.loading
+            }
         default: 
             return state
     }   

@@ -1,11 +1,12 @@
 import React from 'react'
 import Product from './Product/Product'
-import productsArray from '../../data/products'
 import classes from './Products.css'
+import { connect } from 'react-redux'
+import productsArray from '../../data/products'
 
 const products = (props) => (
     <div className={classes.Row}>
-        {productsArray.map((product) => {
+        {props.products.map((product) => {
             if (props.filter === product.category) {
                        return (<Product
                         name={product.name} 
@@ -21,4 +22,11 @@ const products = (props) => (
     </div>
 )
 
-export default products
+
+const mapStateToProps = state => {
+    return {
+        products: state.productsContainer.products
+    }
+}
+
+export default connect(mapStateToProps)(products)

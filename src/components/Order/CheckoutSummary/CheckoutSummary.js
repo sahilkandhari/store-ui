@@ -13,7 +13,7 @@ const checkoutSummary = (props) => {
                  <Cart />
             </div>
             <p>Total Price: {props.price}</p>
-            {props.price == 0 ? disabled = true : disabled = false}
+            {props.price === 0 ? disabled = true : disabled = false}
             <Button btnType="Danger" clicked={props.checkoutCancelled}>CANCEL</Button>
             <Button btnType="Success" clicked={props.checkoutContinued} disabled={disabled}>ORDER</Button>
         </div>

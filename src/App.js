@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {Route, Switch, Redirect} from 'react-router-dom'
+import Spinner from './components/UI/Spinner/Spinner'
 import ProductsContainer from './containers/ProductsContainer/ProductsContainer' 
 import Layout from './components/Layout/Layout'
 import Orders from './containers/Orders/Orders'
@@ -12,6 +13,8 @@ import * as actions from './store/actions/index'
 class App extends Component {
   componentDidMount () {
     this.props.onTryAutoSignup()
+    this.props.onInitProducts()
+    this.props.onInitCartPrices()
   }
 
   render () {
@@ -37,7 +40,7 @@ class App extends Component {
     return (
       <div>
           <Layout>
-            {routes}
+            {this.props.loading ? <Spinner /> : routes}
           </Layout>
       </div>
     );
@@ -46,13 +49,16 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-      isAuth: state.auth.token !== null
+      isAuth: state.auth.token !== null,
+      loading: state.productsContainer.loading
   }
 }
 
  const mapDispatchToProps = dispatch => {
   return {
-    onTryAutoSignup: () => dispatch(actions.checkAuthState())
+    onTryAutoSignup: () => dispatch(actions.checkAuthState()),
+    onInitProducts: () => dispatch(actions.initProducts()),
+    onInitCartPrices : () => dispatch(actions.initCartPrices())
   }
 }
 

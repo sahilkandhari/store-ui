@@ -28,8 +28,6 @@ axios.get('http://localhost:4000/api/products').then((res) => {
     console.log(e)
 })
 
-console.log(products_array)
-
 const products = [{
     "name" : "Spinach",
     "price" : 3,
@@ -67,6 +65,5 @@ const products = [{
     "image" : Cheese
 }]
 
-console.log(products)
 
-export default products_array
+export default products
