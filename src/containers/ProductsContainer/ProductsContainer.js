@@ -102,9 +102,9 @@ class ProductsContainer extends Component {
                 purchasable={this.updatePurchaseState(this.props.cartx)} ordered={this.purchaseHandler}/>
             </Aux>
 
-            // if(this.props.cartx) {
-            //     HomePage = <Spinner />
-            // }
+            if(this.props.cartx === null) {
+                HomePage = <Spinner />
+            }
             console.log(this.props.cartx)
             console.log(this.props.products)
         return (
