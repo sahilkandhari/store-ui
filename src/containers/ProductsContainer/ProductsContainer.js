@@ -23,10 +23,6 @@ class ProductsContainer extends Component {
         filterName: "veg"
     }
 
-    // componentDidMount () {
-    //     this.props.onInitCartPrices()
-    // }
-
     updatePurchaseState (cart) {
             const sum = Object.keys(cart).map((ckey) => {
                 return cart[ckey]
@@ -68,7 +64,9 @@ class ProductsContainer extends Component {
             }
                  
             const elementConfig = { options : [{value: 'veg', displayValue: 'Vegetables'},
-                                               {value: 'dairy', displayValue: 'Dairy'} ]}
+                                               {value: 'dairy', displayValue: 'Dairy'},
+                                               {value: 'fruit', displayValue: 'Fruits'},
+                                               {value: 'condiment', displayValue: 'Condiments'} ]}
 
 
             let orderSummary = <Ordersummary 
@@ -105,8 +103,6 @@ class ProductsContainer extends Component {
             if(this.props.cartx === null) {
                 HomePage = <Spinner />
             }
-            console.log(this.props.cartx)
-            console.log(this.props.products)
         return (
             <div className={classes.Enclosing}>   
                 {this.state.continueCheckout ? checkout : HomePage}             

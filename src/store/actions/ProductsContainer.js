@@ -17,7 +17,6 @@ export const removeProduct = (name) => {
 }
 
 export const setProducts = (prods) => {
-    console.log('in setproducts')
     return {
         type: actionTypes.SET_PRODUCTS,
         products: prods,
@@ -61,7 +60,6 @@ export const initCartPrices = () => {
                         price : res.data[key].price
                     })  
                 }
-            console.log(CART)
             for(let i =0; i < PRODUCT_PRICES_ARRAY.length; i++) {
                 PRODUCT_PRICES[PRODUCT_PRICES_ARRAY[i].name] = PRODUCT_PRICES_ARRAY[i].price
                 }
@@ -84,13 +82,14 @@ export const initProducts = () => {
 
             const res = await axios.get('http://localhost:4000/api/products')
 
-            console.log(products_array)
             dispatch(setProducts(products_array))
 
             for ( let key in res.data) {
-                    if( imagesArray[key].name === res.data[key].name) {
-                        imgx = imagesArray[key].img 
+                for(let i in imagesArray) {
+                    if( imagesArray[i].name === res.data[key].name) {
+                        imgx = imagesArray[i].img 
                     }
+                }
                     products_array.push({
                     name: res.data[key].name,
                     price: res.data[key].price,

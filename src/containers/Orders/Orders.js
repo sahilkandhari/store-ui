@@ -41,7 +41,8 @@ class Orders extends Component {
                             key={order.id} 
                             id={order.id}
                             items={order.items}
-                            price={order.price} />
+                            price={order.price}
+                            status={order.status} />
                     ))}
                 </div>
             );    

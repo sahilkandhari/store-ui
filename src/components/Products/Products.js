@@ -2,7 +2,6 @@ import React from 'react'
 import Product from './Product/Product'
 import classes from './Products.css'
 import { connect } from 'react-redux'
-import productsArray from '../../data/products'
 
 const products = (props) => (
     <div className={classes.Row}>

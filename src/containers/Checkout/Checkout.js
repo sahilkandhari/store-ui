@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import { connect } from 'react-redux';
 
 let products_array = []
@@ -24,7 +25,6 @@ class Checkout extends Component {
                 quantity: cart[key]
             })
         }
-        console.log(products_array)
         return products_array
     }
 
@@ -60,20 +60,20 @@ class Checkout extends Component {
                 .catch( error => {
                     console.log(error);
                 });
-            }).then(() => {
-                const header = {'Authorization' : 'Bearer ' + this.props.authToken}
-                axios.post( 'http://localhost:4000/api/users/me/orders' , order , {headers: header})
-                .then( response => {
-                    this.setState( { done: true } );
-                    window.location.reload()
-                    alert('Order Placed')
-                })
-                .catch( error => {
-                    console.log(error);
-                });
             })
         }
     }
+
+    const header = {'Authorization' : 'Bearer ' + this.props.authToken}
+    axios.post( 'http://localhost:4000/api/users/me/orders' , order , {headers: header})
+    .then( response => {
+        this.setState( { done: true } );
+        window.location.reload()
+        alert('Order Placed')
+    })
+    .catch( error => {
+        console.log(error);
+    });
         
     }
 
@@ -85,7 +85,6 @@ class Checkout extends Component {
                checkoutContinued={this.checkoutContinuedHandler} />
             
             
-            console.log(this.props)
             return ( 
                 <div>
                     {checkoutSummary}
@@ -104,4 +103,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps)(withErrorHandler(Checkout,axios));

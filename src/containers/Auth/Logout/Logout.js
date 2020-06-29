@@ -6,7 +6,6 @@ import axios from 'axios'
 
 class Logout extends Component {
     componentDidMount () {
-        console.log(this.props.authToken)        
         const header = {'Authorization' : 'Bearer ' + this.props.authToken}
         axios.post('http://localhost:4000/api/users/logoutAll', null, {headers: header})
         .then(res => console.log(res))

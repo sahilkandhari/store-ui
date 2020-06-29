@@ -1,14 +1,6 @@
 import * as actionTypes from '../actions/actionTypes'
 import { updateObject } from '../utility'
 
-const CART = {
-    Spinach:0,
-    Carrot:0,
-    Butter:0,
-    Bread:0,
-    Cheese:0
-}
-
 
 const initialState = {
     cart: {},

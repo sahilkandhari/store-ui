@@ -149,11 +149,9 @@ class Auth extends Component {
             }
             axios.post('http://localhost:4000/api/users', signUpForm)
             .then((res) => {
-                console.log(res.data)
                 this.props.addToken(res.data.token, res.data.user._id)
                 this.setState({loading: false})
             })
-            .catch(err => console.log(err))
             this.setState({loading: false})
         }
         else{
@@ -161,11 +159,9 @@ class Auth extends Component {
             axios.post('http://localhost:4000/api/users/login', {email : this.state.controls.email.value, 
                                                                 password: this.state.controls.password.value})
             .then((res) => {
-                console.log(res.data)
                 this.props.addToken(res.data.token, res.data.user._id)
                 this.setState({loading: false})
               })
-            .catch(error => console.log(error.error))
             this.setState({loading: false})
         }
         
