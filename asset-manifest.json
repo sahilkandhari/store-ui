@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/store-ui/static/css/main.0aeccbbf.chunk.css",
+    "main.js": "/store-ui/static/js/main.394a5e4f.chunk.js",
+    "main.js.map": "/store-ui/static/js/main.394a5e4f.chunk.js.map",
+    "runtime-main.js": "/store-ui/static/js/runtime-main.2cc9178c.js",
+    "runtime-main.js.map": "/store-ui/static/js/runtime-main.2cc9178c.js.map",
+    "static/js/2.a66bcd6a.chunk.js": "/store-ui/static/js/2.a66bcd6a.chunk.js",
+    "static/js/2.a66bcd6a.chunk.js.map": "/store-ui/static/js/2.a66bcd6a.chunk.js.map",
+    "index.html": "/store-ui/index.html",
+    "precache-manifest.a12d70269bc4b3014257d0a667fa85fa.js": "/store-ui/precache-manifest.a12d70269bc4b3014257d0a667fa85fa.js",
+    "service-worker.js": "/store-ui/service-worker.js",
+    "static/css/main.0aeccbbf.chunk.css.map": "/store-ui/static/css/main.0aeccbbf.chunk.css.map",
+    "static/js/2.a66bcd6a.chunk.js.LICENSE.txt": "/store-ui/static/js/2.a66bcd6a.chunk.js.LICENSE.txt",
+    "static/media/Carrot.jpg": "/store-ui/static/media/Carrot.c0a68432.jpg",
+    "static/media/ChilliFlakes.jpg": "/store-ui/static/media/ChilliFlakes.6abcdfc0.jpg",
+    "static/media/logo2.jpg": "/store-ui/static/media/logo2.28ddaa7a.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2cc9178c.js",
+    "static/js/2.a66bcd6a.chunk.js",
+    "static/css/main.0aeccbbf.chunk.css",
+    "static/js/main.394a5e4f.chunk.js"
+  ]
+}
